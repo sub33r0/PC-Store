@@ -1,1 +1,24 @@
-<p>home works!</p>
+<ul>
+    <li *ngFor="let part of parts">
+        <a routerLink="/part/{{part.id}}">
+            <img [src]="part.imageUrl" [alt]="part.name"/>
+            <div class="content">
+                <div class="name">
+                    {{part.name}}
+                </div>
+                <span class="favorite {{part.favorite?'':'not'}}">♥</span>
+                <div class="stars">
+                    <star-rating [stars]="part.stars"/>
+                </div>
+                <div class="products-item-footer">
+                    <div class="description">
+                        <span *ngFor="let origin of part.description">{{origin}}</span>
+                    </div>
+                </div>
+                <div class="price">
+                    <span>{{part.price | currency}}</span>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>

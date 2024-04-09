@@ -9,10 +9,10 @@ import { PC } from 'src/app/shared/models/PC';
 })
 export class HomeComponent implements OnInit{
 
-  pc:PC[] = [];
+  parts:PC[] = [];
 
   constructor(private pcService: PCService) { 
-    this.pc = this.pcService.getAll();
+    this.parts = this.pcService.getAll();
   }
 
   ngOnInit(): void {

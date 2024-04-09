@@ -13,4 +13,8 @@ export class PCService {
   getAll(): PC[]{
     return sample_pc;
   }
+
+  getAllPcPartsBySearchTerm(searchTerm: string) {
+    return this.getAll().filter(part => part.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
 }
