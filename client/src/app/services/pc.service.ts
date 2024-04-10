@@ -16,5 +16,10 @@ export class PCService {
 
   getAllPcPartsBySearchTerm(searchTerm: string) {
     return this.getAll().filter(part => part.name.toLowerCase().includes(searchTerm.toLowerCase()));
-    }
+  }
+  
+  getPartById(partId: string): PC {
+    return this.getAll().find(part => part.id === partId) ?? new PC();
+  }
+
 }

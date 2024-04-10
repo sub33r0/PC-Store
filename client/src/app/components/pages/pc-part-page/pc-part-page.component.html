@@ -1,0 +1,24 @@
+<div class="container">
+    <img [src]="part.imageUrl" [alt]="part.name" />
+
+    <div class="details">
+        <div class="header">
+            <span class="name">
+                {{ part.name }}
+            </span>
+            <span class="favorite {{part.favorite? '': 'not'}}">♥</span>
+        </div>
+        <div class="rating">
+            <star-rating [stars]="part.stars" [size]="1.8"/>
+        </div>
+        <div class="description">
+            <span *ngFor="let origin of part.description">
+            {{ origin }}
+            </span>
+        </div>
+        <div class="price">
+            <span>{{ part.price | currency }}</span>
+        </div>
+        <button>Add to Cart</button>
+    </div>
+</div>
