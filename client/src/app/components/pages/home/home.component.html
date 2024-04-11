@@ -1,5 +1,6 @@
 <app-search></app-search>
 <app-tags></app-tags>
+<app-not-found [visible]="!parts || parts.length <= 0" resetLinkText="Reset Search"></app-not-found>
 <ul>
     <li *ngFor="let part of parts">
         <a routerLink="/part/{{part.id}}">
