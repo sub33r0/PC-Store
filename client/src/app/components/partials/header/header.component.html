@@ -3,18 +3,18 @@
         <a routerLink="/" class="logo">PC Shop</a>
         <nav>
             <ul>
-                <li>
-                    <a routerLink="/login">Login</a>
+                <li *ngIf="!isAuth">
+                    <a routerLink="/login-page">Login</a>
                 </li>
-                <li>
+                <li *ngIf="!isAuth">
                     <a routerLink="/register">Register</a>
                 </li>
-                <li class="menu-container">
-                    <a routerLink="/dashboard">Darko</a>
+                <li *ngIf="isAuth" class="menu-container">
+                    <a routerLink="/dashboard">{{user.name}}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profile</a>
                         <a routerLink="/orders">Orders</a>
-                        <a>Logout</a>
+                        <a (click)="logout()">Logout</a>
                     </div>
                 </li>
                 <li>

@@ -1,8 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import { sample_pc, sample_tags } from './data';
+import { sample_pc, sample_tags, sample_user } from './data';
+import jwt from "jsonwebtoken";
 
 const app = express();
+app.use(express.json());
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:4200',
@@ -31,15 +33,26 @@ app.get('/api/parts/tags/:tagName', (req, res) => {
 app.get('/api/parts/:partId', (req, res) => { 
     const partId = req.params.partId;
     const part = sample_pc.find(part => part.id === partId);
-    if (!part) {
-        // If part is not found, send a 404 Not Found response
-        res.status(404).send('Part not found');
-    } else {
-        // If part is found, send the part data
         res.send(part);
-    }
 });
 
+app.post('/api/users/login', (req, res) => {    
+    const { email, password } = req.body;
+    const user = sample_user.find((user:any) => user.email === email && user.password === password);
+    if (user) {
+        res.send(generateTokenResponse(user));
+    } else { 
+        res.status(401).send('Email or password is incorrect!');
+    
+    }
+})
+
+const generateTokenResponse = (user: any) => { 
+    const token = jwt.sign({ email: user.email, isAdmin: user.isAdmin }, 'secret', { expiresIn: '1h' });
+    
+    user.token = token;
+    return user;
+}
 
 const port = 3000;
 

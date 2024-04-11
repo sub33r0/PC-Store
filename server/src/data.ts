@@ -113,3 +113,18 @@ export const sample_tags: any[] = [
         count: 1,
     },
 ];
+
+export const sample_user: any = [{
+    email: "ds@abv.bg",
+    password: "123456",
+    name: "Darko",
+    isAdmin: true,
+    address: "Sofia, Bulgaria",
+},
+{
+    email: "pesho@gmail.com",
+    password: "12345",
+    name: "Pesho",
+    isAdmin: false,
+    address: "Plovdiv, Bulgaria",
+}];
