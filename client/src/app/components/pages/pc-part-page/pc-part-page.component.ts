@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { PCService } from 'src/app/services/pc.service';
 import { PC } from 'src/app/shared/models/PC';
 
@@ -12,7 +13,7 @@ export class PcPartPageComponent implements  OnInit {
 
   part!: PC;
 
-  constructor(activatedRoute: ActivatedRoute, pcService: PCService) {
+  constructor(activatedRoute: ActivatedRoute, pcService: PCService, private cartService: CartService, private router: Router) {
     activatedRoute.params.subscribe((params) => {
       if (params.partId) {
         this.part = pcService.getPartById(params.partId);
@@ -21,4 +22,10 @@ export class PcPartPageComponent implements  OnInit {
   }
     ngOnInit(): void {
     }
+  
+  addToCart() {
+    this.cartService.addToCart(this.part);
+    this.router.navigateByUrl('/cart-page');
+  }
+
 }
