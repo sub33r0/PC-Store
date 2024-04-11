@@ -16,7 +16,9 @@ export class PcPartPageComponent implements  OnInit {
   constructor(activatedRoute: ActivatedRoute, pcService: PCService, private cartService: CartService, private router: Router) {
     activatedRoute.params.subscribe((params) => {
       if (params.partId) {
-        this.part = pcService.getPartById(params.partId);
+        pcService.getPartById(params.partId).subscribe(serverPart => { 
+          this.part = serverPart;
+        });
       }
     });
   }

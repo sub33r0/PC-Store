@@ -1,7 +1,7 @@
-<app-not-found [visible]="!part.id" notFoundMessage="Product Not Found!"
+<app-not-found [visible]="!part" notFoundMessage="Product Not Found!"
 resetLinkText="Back To Homepage"></app-not-found>
 
-<div *ngIf="part.id" class="container">
+<div *ngIf="part" class="container">
     <img [src]="part.imageUrl" [alt]="part.name" />
 
     <div class="details">

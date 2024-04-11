@@ -1,5 +1,6 @@
 import { Component , OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { PCService } from 'src/app/services/pc.service';
 import { PC } from 'src/app/shared/models/PC';
 
@@ -13,14 +14,19 @@ export class HomeComponent implements OnInit{
   parts:PC[] = [];
 
   constructor(private pcService: PCService, activatedRoute: ActivatedRoute) { 
+    let foodsObservable:Observable<PC[]>;
     activatedRoute.params.subscribe((params) => {
       if(params.searchTerm){
-        this.parts = this.pcService.getAllPcPartsBySearchTerm(params.searchTerm);
+        foodsObservable = this.pcService.getAllPcPartsBySearchTerm(params.searchTerm);
       } else if (params.tag) { 
-        this.parts = this.pcService.getPartByTag(params.tag);
+        foodsObservable = this.pcService.getPartByTag(params.tag);
       }else {
-        this.parts = this.pcService.getAll();
+        foodsObservable = pcService.getAll();
+
       }
+      foodsObservable.subscribe((serverParts) => {
+        this.parts = serverParts;
+      });
     });
   }
 
