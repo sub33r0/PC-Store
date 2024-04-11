@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit{
     activatedRoute.params.subscribe((params) => {
       if(params.searchTerm){
         this.parts = this.pcService.getAllPcPartsBySearchTerm(params.searchTerm);
-      } else {
+      } else if (params.tag) { 
+        this.parts = this.pcService.getPartByTag(params.tag);
+      }else {
         this.parts = this.pcService.getAll();
       }
     });

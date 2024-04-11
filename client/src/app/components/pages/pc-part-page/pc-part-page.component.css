@@ -74,6 +74,20 @@ img{
     color: darkgray;
 }
 
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags span{
+    background-color: aliceblue;
+    padding: 0.3rem 1rem;
+    margin: 0.2rem 0.15rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    color: blue;
+}
+
 button{
     color: white;
     background: blue;

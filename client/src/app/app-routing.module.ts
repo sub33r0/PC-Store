@@ -6,7 +6,8 @@ import { PcPartPageComponent } from './components/pages/pc-part-page/pc-part-pag
 const routes: Routes = [
   {path: '', component: HomeComponent},
   { path: 'search/:searchTerm', component: HomeComponent },
-  { path: 'part/:partId', component: PcPartPageComponent}
+  { path: 'tag/:tag', component: HomeComponent },
+  { path: 'part/:partId', component: PcPartPageComponent },
 ];
 
 @NgModule({

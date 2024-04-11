@@ -16,6 +16,11 @@
             {{ origin }}
             </span>
         </div>
+        <div class="tags">
+            <a *ngFor="let tag of part.tags" routerLink="/tag/{{tag}}">
+            {{ tag }}
+            </a>
+        </div>
         <div class="price">
             <span>{{ part.price | currency }}</span>
         </div>
