@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { sample_pc, sample_tags } from '../data';
 import { PartModel } from '../models/parts.model';
 
 const router = Router();
@@ -9,7 +8,6 @@ router.get('/seed', async (req, res) => {
     if (partsCount > 0) {    
         return res.send('Database has already been seeded!');
     }
-    await PartModel.create(sample_pc);
     res.send('Database seeded!');
 });
 
