@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/User';
 import { IUserLogin } from '../shared/models/interfaces/IUserLogin';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { USERS_LOGIN_URL } from '../shared/models/constants/urls';
+import { HttpClient } from '@angular/common/http';
+import { USERS_LOGIN_URL, USERS_REGISTER_URL } from '../shared/models/constants/urls';
 import { ToastrService } from 'ngx-toastr';
+import { IUserRegister } from '../shared/models/interfaces/IUserRegister';
 
 const USER_KEY = 'User';
 
@@ -30,6 +31,21 @@ export class UserService {
         },
         error:(errorResponse) => {
           this.toastrService.error(errorResponse.error, 'Login Failed!');
+        }
+      })
+    );
+  }
+
+  register(userRegister:IUserRegister): Observable<User> {
+    return this.http.post<User>(USERS_REGISTER_URL, userRegister).pipe(
+      tap({
+        next: (user) => {
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+          this.toastrService.success(`Welcome to PC Store ${user.name}!`, 'Register Successful!');
+        },
+        error:(errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Register Failed!');
         }
       })
     );

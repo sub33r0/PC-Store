@@ -20,6 +20,7 @@ import { InputContainerComponent } from './components/partials/input-container/i
 import { InputValidationComponent } from './components/partials/input-validation/input-validation.component';
 import { TextInputComponent } from './components/partials/text-input/text-input.component';
 import { DefalutButtonComponent } from './components/partials/defalut-button/defalut-button.component';
+import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { DefalutButtonComponent } from './components/partials/defalut-button/def
     InputContainerComponent,
     InputValidationComponent,
     TextInputComponent,
-    DefalutButtonComponent
+    DefalutButtonComponent,
+    RegisterPageComponent
 
     
 

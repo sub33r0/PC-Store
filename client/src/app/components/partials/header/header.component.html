@@ -7,7 +7,7 @@
                     <a routerLink="/login-page">Login</a>
                 </li>
                 <li *ngIf="!isAuth">
-                    <a routerLink="/register">Register</a>
+                    <a routerLink="/register-page">Register</a>
                 </li>
                 <li *ngIf="isAuth" class="menu-container">
                     <a routerLink="/dashboard">{{user.name}}</a>
